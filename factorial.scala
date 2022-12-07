@@ -1,7 +1,7 @@
 package com.techsophy
 package training.practice
 
-//find factorial of a number using while loop
+//find factorial of a number using while loop , recursion and tail recursion
 
 object factorial {
 
