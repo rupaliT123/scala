@@ -8,14 +8,17 @@ object EvenOddUsingTailRecursion
   def main(args:Array[String]):Unit = {
     val list:List[Int] = List(1,2,3,4,7,8,9)
 
-    println(evenOrOdd(Nil,Nil,list))
+    val data = evenOrOdd(Nil,Nil,list)
+    println("Even: "+data.even.reverse)
+    println("Odd: "+data.odd.reverse)
   }
+  case class evenAndOddList(even:List[Int],odd:List[Int])
 
   @tailrec
-  def evenOrOdd(evenList:List[Int],oddList:List[Int],list:List[Int]):(List[Int],List[Int]) = {
+  def evenOrOdd(evenList:List[Int],oddList:List[Int],list:List[Int]):evenAndOddList = {
     if(list.isEmpty)
       {
-        (evenList,oddList)
+        evenAndOddList(evenList,oddList)
       }
      else if(list.head % 2 == 0)
       {
