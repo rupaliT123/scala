@@ -1,5 +1,5 @@
 package com.techsophy
-package training.practice
+package training.practice.basic
 
 //Given a number, check whether it is palindrome or not
 
