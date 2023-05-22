@@ -1,0 +1,21 @@
+class Solution {
+    public int[] findingUsersActiveMinutes(int[][] logs, int k) {
+         Map<Integer, HashSet<Integer>> loginUserTime = new HashMap<>();
+         for(int[] log : logs)
+         {
+            int userId = log[0];
+            if (!loginUserTime.containsKey(userId)) {
+                loginUserTime.put(userId, new HashSet<>());
+            }
+            loginUserTime.get(userId).add(log[1]);
+         }
+         int[] result =  new int[k];
+         for(int userId : loginUserTime.keySet())
+         {
+            int value =  loginUserTime.get(userId).size();
+            result[value-1]++;
+         }
+
+        return result;
+    }
+}
