@@ -1,0 +1,42 @@
+class Solution {
+    public int maximumSum(int[] nums) {
+        Map<Integer,int[]> map = new HashMap<>();
+        int max_value = -1;
+        for(int i = 0; i < nums.length; i++)
+        {
+            int n = nums[i];
+            int sum = -1;
+            while(n != 0)
+            {
+                sum =  sum + n % 10;
+                n = n/10;
+            }
+            if(!(map.containsKey(sum)))
+            {
+                int[] values = {nums[i], Integer.MIN_VALUE};
+                map.put(sum ,values);
+            }
+            else
+            {
+                int[] val =  map.get(sum);
+                if(nums[i] > val[0])
+                {
+                    int temp = val[0];
+                    val[0] =  nums[i];
+                    val[1] = temp;
+                }
+                else 
+                {
+                    val[1] = nums[i];
+                }
+                map.put(sum, val);
+                if(val[0]+val[1] > max_value)
+                {
+                    max_value = val[0]+val[1];
+                }
+            }
+        }
+        return max_value;
+        
+    }
+}
